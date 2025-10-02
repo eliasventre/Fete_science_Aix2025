@@ -23,7 +23,6 @@ V1 = 2700            # volume compartimento centrale [L]
 V2 = 774             # volume compartimento periferico [L]
 Q = 16.512           # intercompartmental clearance [L/d]
 
-#kge = 5.34e-04       # crescita tumorale esponenziale [1/d]
 kge = 0.001     # crescita tumorale esponenziale [1/d]
 kkill = 0.1   # tasso killing farmaco [1/d]
 #kkill = 2.42e-02     # tasso killing farmaco [1/d]
