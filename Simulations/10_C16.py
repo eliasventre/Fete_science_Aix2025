@@ -23,9 +23,9 @@ V1 = 2700            # volume compartimento centrale [L]
 V2 = 774             # volume compartimento periferico [L]
 Q = 16.512           # intercompartmental clearance [L/d]
 
-kge = 5.34e-04       # crescita tumorale esponenziale [1/d]
-kkill = 3.46e-03     # tasso killing farmaco [1/d]
-lambda_res = 1.32e-02 # decadimento efficacia (resistenza) [1/d]
+kge = 0.001     # crescita tumorale esponenziale [1/d]
+kkill = 0.1   # tasso killing farmaco [1/d]
+lambda_res = 0.002 # decadimento efficacia (resistenza) [1/d]
 
 TS0 = 10.0           # diametro iniziale del tumore [cm]
 
@@ -33,7 +33,7 @@ TS0 = 10.0           # diametro iniziale del tumore [cm]
 # 2. DOSE E REGIME TERAPEUTICO
 # -----------------------------
 dose = 100
-treatment_duration = 42   # giorni totali di trattamento
+treatment_duration = 84   # giorni totali di trattamento
 sim_duration = 365        # giorni totali
 
 # genera dose_times secondo schema 4w ON / 2w OFF (solo fino a 42 giorni)
@@ -128,22 +128,22 @@ TS_array = np.array(TS_list)
 EXPOSURE_array = np.array(EXPOSURE_list)
 
 plt.figure(figsize=(10,6))
-plt.plot(t_array, TS_array, label="Tumor Diameter (TS) [cm]")
-plt.axvline(x=treatment_duration, color='red', linestyle='--', label="Fine trattamento")
-plt.xlabel("Time [days]")
-plt.ylabel("Tumor Diameter [cm]")
-plt.title("TGI Model: Tumor Diameter over 365 days (20 mg/die, 4w on/2w off, primi 42 giorni)")
+plt.plot(t_array, TS_array, label="Diamètre de la tumeur (TS) [cm]")
+plt.axvline(x=treatment_duration, color='red', linestyle='--', label="Fin du traitement")
+plt.xlabel("Temps [jours]")
+plt.ylabel("Diamètre de la tumeur [cm]")
+plt.title("Dose Forte - Fréquence Elevée - Durée Courte")
 plt.legend()
 plt.grid(True)
 plt.show(block=False)
 
 plt.figure(figsize=(10,6))
-plt.plot(t_array, EXPOSURE_array, label="Exposure (Cc) [mg/L]", color='green')
-plt.axvline(x=treatment_duration, color='red', linestyle='--', label="Fine trattamento")
-plt.xlabel("Time [days]")
-plt.ylabel("Drug Exposure [mg/L]")
+plt.plot(t_array, EXPOSURE_array, label="Exposition", color='green')
+plt.axvline(x=treatment_duration, color='red', linestyle='--', label="Fin du traitement")
+plt.xlabel("Temps [jours]")
+plt.ylabel("Exposition au médicament")
 plt.ylim([0, 0.12])
-plt.title("TGI Model: Drug Exposure over 365 days (20 mg/die, 4w on/2w off, primi 42 giorni)")
+plt.title("Dose Forte - Fréquence Elevée - Durée Courte")
 plt.legend()
 plt.grid(True)
 plt.show()
