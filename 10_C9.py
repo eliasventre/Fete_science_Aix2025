@@ -23,9 +23,9 @@ V1 = 2700
 V2 = 774
 Q = 16.512
 
-kge = 5.34e-04
-kkill = 3.46e-03
-lambda_res = 1.32e-02
+kge = 0.001     # crescita tumorale esponenziale [1/d]
+kkill = 0.1   # tasso killing farmaco [1/d]
+lambda_res = 0.002 # decadimento efficacia (resistenza) [1/d]
 
 TS0 = 10
 
@@ -106,22 +106,22 @@ EXPOSURE_array = np.array(EXPOSURE_list)
 # 5. GRAFICI
 # -----------------------------
 plt.figure(figsize=(10,6))
-plt.plot(t_array, TS_array, label="Tumor Diameter (TS) [cm]")
-plt.axvline(x=treatment_duration, color='red', linestyle='--', label="Fine trattamento")
-plt.xlabel("Time [days]")
-plt.ylabel("Tumor Diameter [cm]")
-plt.title("TGI Model: Tumor Diameter over 365 days (210 giorni trattamento)")
+plt.plot(t_array, TS_array, label="Diamètre de la tumeur (TS) [cm]")
+plt.axvline(x=treatment_duration, color='red', linestyle='--', label="Fin du traitement")
+plt.xlabel("Temps [jours]")
+plt.ylabel("Diamètre de la tumeur [cm]")
+plt.title("Dose Forte - Fréquence Faible - Durée Longue")
 plt.legend()
 plt.grid(True)
 plt.show(block=False)
 
 plt.figure(figsize=(10,6))
-plt.plot(t_array, EXPOSURE_array, label="Exposure (Cc) [mg/L]", color='green')
-plt.axvline(x=treatment_duration, color='red', linestyle='--', label="Fine trattamento")
-plt.xlabel("Time [days]")
-plt.ylabel("Drug Exposure [mg/L]")
+plt.plot(t_array, EXPOSURE_array, label="Exposition", color='green')
+plt.axvline(x=treatment_duration, color='red', linestyle='--', label="Fin du traitement")
+plt.xlabel("Temps [jours]")
+plt.ylabel("Exposition au médicament")
 plt.ylim([0, 0.12])
-plt.title("TGI Model: Drug Exposure over 365 days (210 giorni trattamento)")
+plt.title("Dose Forte - Fréquence Faible - Durée Longue")
 plt.legend()
 plt.grid(True)
 plt.show()
