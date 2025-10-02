@@ -29,7 +29,7 @@ kge = 0.001          # crescita tumorale esponenziale [1/d]
 kkill = 0.1          # tasso killing farmaco [1/d]
 lambda_res = 0.002   # decadimento efficacia (resistenza) [1/d]
 
-TS0 = 1           # diametro iniziale del tumore [cm]
+TS0 = 0.1           # diametro iniziale del tumore [cm]
 
 # -----------------------------
 # 2. DOSE E REGIME TERAPEUTICO
@@ -151,7 +151,7 @@ ax_diam.axhline(TS0, color='k', linestyle='--', linewidth=1.5, label='Diamètre 
 # linea verticale fine trattamento (azzurro chiaro)
 ax_diam.axvline(treatment_duration, color='c', linestyle='--', linewidth=1.2, label='Fin du traitement')
 ax_diam.set_xlim(0, sim_duration)
-ax_diam.set_ylim(0, 1.5)
+ax_diam.set_ylim(0, 0.15)
 ax_diam.set_xlabel("Temps (jours)")
 ax_diam.set_ylabel("Diamètre (cm)")
 ax_diam.set_title("Diamètre au cours du temps")

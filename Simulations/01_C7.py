@@ -16,13 +16,13 @@ Q = 16.512
 kge = 0.001
 kkill = 0.1
 lambda_res = 0.002
-TS0 = 1  # diamètre initial [cm]
+TS0 = 0.1  # diamètre initial [cm]
 
 # -----------------------------
 # 2. DOSES
 # -----------------------------
 dose = 100
-duree_traitement = 252
+duree_traitement = 84
 intervalle_dose = 2.0
 temps_doses = np.arange(0, duree_traitement + 0.1, intervalle_dose)
 duree_simulation = 365
@@ -86,7 +86,7 @@ t_array = np.array(t_list)
 # 5. ANIMATION: SPHÈRE + COURBES + RÉFÉRENCES + RÉGION TOXICITÉ + LIGNES FIN TRAITEMENT
 # -----------------------------
 fig = plt.figure(figsize=(14, 6))
-fig.suptitle("Dose Forte - Fréquence Faible - Durée Moyenne", fontsize=16, y=0.98)
+fig.suptitle("Dose Forte - Fréquence Faible - Durée Courte", fontsize=16, y=0.98)
 
 # 3D tumeur
 ax3d = fig.add_subplot(1, 2, 1, projection='3d')
@@ -106,7 +106,7 @@ line_diam, = ax_diam.plot([], [], 'r', label='Diamètre tumeur')
 ax_diam.axhline(TS0, color='k', linestyle='--', label='Diamètre initial')
 ax_diam.axvline(duree_traitement, color='c', linestyle='--', label='Fin du traitement')
 ax_diam.set_xlim(0, duree_simulation)
-ax_diam.set_ylim(0, 1.5)
+ax_diam.set_ylim(0, 0.15)
 ax_diam.set_xlabel("Temps (jours)")
 ax_diam.set_ylabel("Diamètre (cm)")
 ax_diam.set_title("Diamètre au cours du temps")

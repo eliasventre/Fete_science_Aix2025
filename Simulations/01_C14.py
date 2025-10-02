@@ -29,12 +29,12 @@ kge = 0.001          # crescita tumorale esponenziale [1/d]
 kkill = 0.1          # tasso killing farmaco [1/d]
 lambda_res = 0.002   # decadimento efficacia (resistenza) [1/d]
 
-TS0 = 1           # diametro iniziale del tumore [cm]
+TS0 = 0.1          # diametro iniziale del tumore [cm]
 
 # -----------------------------
 # 2. DOSE E REGIME TERAPEUTICO
 # -----------------------------
-dose = 100
+dose = 50
 treatment_duration = 252   # giorni totali di trattamento (come nel tuo script)
 sim_duration = 365         # durata simulazione
 # genera dose_times secondo schema 4w ON / 2w OFF (come nel tuo script)
@@ -128,7 +128,7 @@ EXPOSURE_array = np.array(EXPOSURE_list)
 # -----------------------------
 fig = plt.figure(figsize=(14, 6))
 # titolo globale (in francese come richiesto in precedenza)
-fig.suptitle("Dose Forte - Fréquence Elevée - Durée Moyenne", fontsize=16, y=0.98)
+fig.suptitle("Dose Moyenne - Fréquence Elevée - Durée Moyenne", fontsize=16, y=0.98)
 
 # asse 3D per la sfera
 ax3d = fig.add_subplot(1, 2, 1, projection='3d')
@@ -151,7 +151,7 @@ ax_diam.axhline(TS0, color='k', linestyle='--', linewidth=1.5, label='Diamètre 
 # linea verticale fine trattamento (azzurro chiaro)
 ax_diam.axvline(treatment_duration, color='c', linestyle='--', linewidth=1.2, label='Fin du traitement')
 ax_diam.set_xlim(0, sim_duration)
-ax_diam.set_ylim(0, 1.5)
+ax_diam.set_ylim(0, 0.15)
 ax_diam.set_xlabel("Temps (jours)")
 ax_diam.set_ylabel("Diamètre (cm)")
 ax_diam.set_title("Diamètre au cours du temps")
