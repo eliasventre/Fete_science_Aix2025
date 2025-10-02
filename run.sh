@@ -5,7 +5,7 @@ SIZE=$(zenity --list \
     --title="Choix de la taille initiale de la tumeur" \
     --radiolist \
     --column="Choisir" --column="Taille" \
-    TRUE "petite" FALSE "normale" FALSE "grosse")
+    TRUE "petite" FALSE "normale" FALSE "grosse" 2>/dev/null)
 
 # Si l'utilisateur annule
 if [ -z "$SIZE" ]; then
@@ -16,11 +16,11 @@ fi
 # Demande du numéro de carte
 CARD=$(zenity --entry \
     --title="Numéro de carte" \
-    --text="Entre un numéro de carte (1 à 18):")
+    --text="Entre un numéro de carte (1 à 18):" 2>/dev/null)
 
 # Vérification basique
 if ! [[ "$CARD" =~ ^[0-9]+$ ]] || [ "$CARD" -lt 1 ] || [ "$CARD" -gt 18 ]; then
-    zenity --error --text="Numéro de carte invalide (doit être entre 1 et 18)."
+    zenity --error --text="Numéro de carte invalide (doit être entre 1 et 18)." 2>/dev/null
     exit 1
 fi
 
@@ -35,11 +35,11 @@ esac
 FILENAME="${PREFIX}_C${CARD}.py"
 
 # Vérifie si le fichier existe
-if [ ! -f "./simulations/$FILENAME" ]; then
-    zenity --error --text="Le fichier ./simulations/$FILENAME n'existe pas."
+if [ ! -f "$FILENAME" ]; then
+    zenity --error --text="Le fichier $FILENAME n'existe pas." 2>/dev/null
     exit 1
 fi
 
 # Lance le script Python
-zenity --info --text="Lancement de $FILENAME..."
-python3 "./simulations/$FILENAME"
+zenity --info --text="Lancement de $FILENAME..." 2>/dev/null
+python3 "$FILENAME"
