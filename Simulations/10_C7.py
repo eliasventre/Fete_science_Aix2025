@@ -86,7 +86,7 @@ t_array = np.array(t_list)
 # 5. ANIMATION: SPHÈRE + COURBES + RÉFÉRENCES + RÉGION TOXICITÉ + LIGNES FIN TRAITEMENT
 # -----------------------------
 fig = plt.figure(figsize=(14, 6))
-fig.suptitle("Dose Forte - Fréquence Faible - Durée Courte", fontsize=16, y=0.98)
+fig.suptitle("Taille Grosse - Dose Forte - Fréquence Faible - Durée Courte", fontsize=16, y=0.98)
 
 # 3D tumeur
 ax3d = fig.add_subplot(1, 2, 1, projection='3d')
