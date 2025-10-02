@@ -128,7 +128,7 @@ EXPOSURE_array = np.array(EXPOSURE_list)
 # -----------------------------
 fig = plt.figure(figsize=(14, 6))
 # titolo globale (in francese come richiesto in precedenza)
-fig.suptitle("Dose Forte - Fréquence Elevée - Durée Moyenne", fontsize=16, y=0.98)
+fig.suptitle("Taille Moyenne - Dose Forte - Fréquence Elevée - Durée Moyenne", fontsize=16, y=0.98)
 
 # asse 3D per la sfera
 ax3d = fig.add_subplot(1, 2, 1, projection='3d')
