@@ -24,29 +24,29 @@ fi
 # Demande du numéro de carte
 CARD=$(zenity --entry \
     --title="Simulation PKPD" \
-    --text="Entre un numéro de carte (1 à 19):" 2>/dev/null)
+    --text="Entre un numéro de carte (1 à 18):" 2>/dev/null)
 
 # Vérification basique
-if ! [[ "$CARD" =~ ^[0-9]+$ ]] || [ "$CARD" -lt 1 ] || [ "$CARD" -gt 19 ]; then
-    zenity --error --text="Numéro de carte invalide (doit être entre 1 et 19)." 2>/dev/null
+if ! [[ "$CARD" =~ ^[0-9]+$ ]] || [ "$CARD" -lt 1 ] || [ "$CARD" -gt 18 ]; then
+    zenity --error --text="Numéro de carte invalide (doit être entre 1 et 18)." 2>/dev/null
     exit 1
 fi
 
 # Mapping taille -> préfixe numérique
 case $SIZE in
-    "petite") PREFIX="1" ;;
-    "moyenne") PREFIX="10" ;;
-    "grosse") PREFIX="100" ;;
+    "petite") PREFIX="01" ;;
+    "moyenne") PREFIX="1" ;;
+    "grosse") PREFIX="10" ;;
 esac
 
 # Construction du nom de fichier
 FILENAME="${PREFIX}_C${CARD}.py"
 
 # Vérifie si le fichier existe
-if [ ! -f "./$FILENAME" ]; then
-    zenity --error --text="Le fichier ./$FILENAME n'existe pas." 2>/dev/null
+if [ ! -f "./simulations/$FILENAME" ]; then
+    zenity --error --text="Le fichier ./simulations/$FILENAME n'existe pas." 2>/dev/null
     exit 1
 fi
 
 # Lance le script Python directement (plus de popup finale)
-python3 "./$FILENAME"
+python3 "./simulations/$FILENAME"
